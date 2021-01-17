@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import TitleFeetback from './component/TitleFeedback'
+//import SectionsButton from './component/Button';
+//import data from './data/statistic.json'
+//import Statistic from './component/Statistic'
+import ComponentWithState from './component/ComponentWithState'
 
+export default App
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TitleFeetback title="Please leave feedback" />
+      <ComponentWithState />
     </div>
-  );
+  )
 }
 
-export default App;
+//export default App;<SectionsButton neutral={data.neutral} />
+/*   <Statistic
+        good ={data.good}
+        neutral={data.neutral} 
+        bad={data.bad} />*/
