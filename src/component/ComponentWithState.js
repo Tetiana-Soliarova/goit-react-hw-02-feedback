@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import styles from './styles.css'
+//import styles from './styles.css'
 import SectionsButton from './Button'
 import Statistic from './Statistic'
 
@@ -41,18 +41,20 @@ increaseBad = (event) =>{
                 bad,
             };   
         });
+    console.log('bad', this.increaseBad.value)
     };
 
     countTotalFeedback = () => {
-        const total = 0;
-        const countTotal = 1  + 2;
-        return (countTotal);
-             
-        
+       return  Object.values(this.state).reduce((acc, value) => 
+             acc + value,0
+        )
+         
+      
 }
 
     
-  render() {
+    render() {
+        let total = this.countTotalFeedback();
     return (
         <>
             <SectionsButton
@@ -64,10 +66,9 @@ increaseBad = (event) =>{
             <Statistic
                 good={this.state.good}
                 neutral={this.state.neutral}
-                bad={this.state.bad} /> 
-            <li>
-                <span> Total: {0}{this.countTotal}</span>
-            </li>
+                bad={this.state.bad}
+                total={total}/> 
+            
 
       </>
     )
