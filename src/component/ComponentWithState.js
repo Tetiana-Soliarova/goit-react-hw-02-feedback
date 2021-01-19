@@ -1,7 +1,8 @@
 import { Component } from 'react'
-//import styles from './styles.css'
-import SectionsButton from './Button'
-import Statistic from './Statistic'
+import styles from './styles.module.css'
+import FeedbackOptions from './FeedbackOptions'
+import Statistics from './Statistics'
+import Notification from './Notification'
 
 class ComponentWithState extends Component {
     static defaultProp = {
@@ -14,62 +15,70 @@ class ComponentWithState extends Component {
       bad: 0,
   }
 
-    increase = (event) =>{
-        this.setState((prevState) => {
-            const good = prevState.good + 1;
-            
-            return {
-                good,
-               
-            };   
-        });
-    };
+ 
 
-    increaseNautral = (event) =>{
+    increase = options =>{
         this.setState((prevState) => { 
-            const neutral = prevState.neutral + 1;
             return {    
-                neutral,
+                [options]:prevState[options] + 1
             };   
         });
-    };
-
-increaseBad = (event) =>{
-        this.setState((prevState) => { 
-            const bad = prevState.bad + 1;
-            return {    
-                bad,
-            };   
-        });
-    console.log('bad', this.increaseBad.value)
+    
     };
 
     countTotalFeedback = () => {
        return  Object.values(this.state).reduce((acc, value) => 
              acc + value,0
-        )
-         
-      
+        )   
 }
 
     
+    
+    countPositiveFeedbackPercentage = () => {
+         const positiveFeetback = +((this.state.good / this.countTotalFeedback())*100).toFixed()
+           return positiveFeetback > 0 ? positiveFeetback : 0
+    }
+    
+
+
+
     render() {
         let total = this.countTotalFeedback();
-    return (
-        <>
-            <SectionsButton
-                good={this.increase}
-                neutral={this.increaseNautral}
-                bad={this.increaseBad}/>
-            
-
-            <Statistic
+        let positivePercentage = this.countPositiveFeedbackPercentage();
+        
+/*componentStatistic = () => {
+             if(total===0){
+                <Notification message="No feedback given"/>
+            } else{
+             <Statistics
                 good={this.state.good}
                 neutral={this.state.neutral}
                 bad={this.state.bad}
-                total={total}/> 
-            
+                total={total}
+                feedback = {positivePercentage}/>    
+    }
+    
+ }
+    */
+    return (
+        <>
+            <FeedbackOptions
+                options={this.state} onLeaveFeedback={this.increase} />
+            <h2 className={styles.title}>Statistics</h2>
 
+            {total>0?(<Statistics
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={total}
+                feedback={positivePercentage} />)
+             : (<Notification message="No feedback given"/>)}
+              
+            
+         
+            
+            
+            
       </>
     )
   }

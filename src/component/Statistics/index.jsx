@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./statistic.module.css";
 
-const Statistics = ({ good, bad, neutral, total }) => {
+const Statistics = ({ good, bad, neutral, total, feedback }) => {
   return (
     <div>
-      <h2 className={styles.title}>Statistics</h2>
+      
 
       <ul className={styles.list}>
         <li>
@@ -20,6 +20,12 @@ const Statistics = ({ good, bad, neutral, total }) => {
         <li>
           <span className={styles.statistic}> Total: {total}</span>
         </li>
+        <li>
+          <span className={styles.statistic}>
+            {" "}
+            Positive feedback: {feedback} %
+          </span>
+        </li>
       </ul>
     </div>
   );
@@ -27,13 +33,15 @@ const Statistics = ({ good, bad, neutral, total }) => {
 
 Statistics.defaultProp = {
   total: 0,
-}
+  
+};
 
 Statistics.propTypes = {
   good: PropTypes.number,
   neutral: PropTypes.number,
   bad: PropTypes.number,
   total: PropTypes.number,
+  feedback: PropTypes.number,
 };
 
 export default Statistics;
