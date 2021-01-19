@@ -1,8 +1,5 @@
 import React from 'react'
 import Section from './component/Section'
-//import SectionsButton from './component/Button';
-//import data from './data/statistic.json'
-//import Statistic from './component/Statistic'
 import ComponentWithState from './component/ComponentWithState'
 
 
@@ -17,5 +14,4 @@ function App() {
   )
 }
 
-//export default App;
 

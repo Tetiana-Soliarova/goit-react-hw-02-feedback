@@ -1,5 +1,5 @@
 import React from "react";
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from "./styles.module.css";
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -34,17 +34,11 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   );
 };
 
-/*SectionsButton.defaultProp = {
-    good: 0,
-    neutral: 0,
-    bad:0,
-}
-
-SectionsButton.propTypes = {
-  good: PropTypes.string,
-  neutral: PropTypes.string,
-  bad: PropTypes.number,
+FeedbackOptions.propType = {
+  options: PropTypes.number.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
-*/
+
+
 export default FeedbackOptions;
-//
+
