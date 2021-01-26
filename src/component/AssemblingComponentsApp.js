@@ -4,7 +4,7 @@ import FeedbackOptions from './FeedbackOptions'
 import Statistics from './Statistics'
 import Notification from './Notification'
 
-class ComponentWithState extends Component {
+class AssemblingComponentsApp extends Component {
   static defaultProp = {
     total: 0,
   }
@@ -60,4 +60,4 @@ class ComponentWithState extends Component {
     )
   }
 }
-export default ComponentWithState
+export default AssemblingComponentsApp

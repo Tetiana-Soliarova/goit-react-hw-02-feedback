@@ -1,6 +1,6 @@
 import React from 'react'
 import Section from './component/Section'
-import ComponentWithState from './component/ComponentWithState'
+import AssemblingComponentsApp from './component/AssemblingComponentsApp'
 
 
 export default App
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Section title="Please leave feedback">
-        <ComponentWithState />
+        <AssemblingComponentsApp/>
       </Section>
     </div>
   )
